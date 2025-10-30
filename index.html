@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jay Thomas Turner | Full-Stack Developer</title>
+
+    <!-- Google Fonts: Inter (body) + JetBrains Mono (code) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+    <style>
+        /* === CORE RESET === */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f8f8;
+            color: #1a1a1a;
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        /* === NAV / SITE TITLE === */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            z-index: 1000;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .site-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .site-title a {
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .site-title a:hover {
+            color: #555;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -4px;
+            left: 0;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Active nav link */
+        .nav-links a.active {
+            font-weight: 700;
+            color: #000;
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Adjust hero to account for fixed header */
+        #hero {
+            padding-top: 80px;
+        }
+
+        /* === HERO === */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #ffffff;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 860px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.8rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 1.2rem;
+            color: #000000;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.35rem;
+            color: #333333;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: transparent;
+            color: #000;
+            border: 2.5px solid #000;
+            border-radius: 0;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* === ABOUT ME – WITH PHOTO === */
+        #about {
+            padding: 140px 5% 100px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .about-photo {
+            flex: 1;
+            min-width: 260px;
+            max-width: 340px;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 0;
+            border: 3px solid #000;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about-photo img:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        #about h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #000;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            color: #2a2a2a;
+            margin-bottom: 1.4rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .about-text .highlight {
+            font-family: 'JetBrains Mono', monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* === GITHUB STATS === */
+        .github-stats {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .github-stats h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        .github-stats img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        /* === SKILLS GRID === */
+        .skills-section {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 2rem auto 0;
+        }
+
+        .skill-item {
+            background: #ffffff;
+            padding: 2rem 1.5rem;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-6px);
+            border-color: #000;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .skill-item i {
+            font-size: 2.6rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            color: #000;
+        }
+
+        .skill-item span {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+
+        /* === PROJECTS === */
+        #projects {
+            padding: 120px 5%;
+            background: #f8f8f8;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3.5rem;
+            color: #000;
+            letter-spacing: -1px;
+        }
+
+        .project-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: #ffffff;
+            width: 340px;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid #e8e8e8;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .project-img {
+            height: 200px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #e0e0e0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-info {
+            padding: 1.8rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.6rem;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            font-size: 0.98rem;
+            color: #444;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .project-links a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 1.2rem;
+            position: relative;
+        }
+
+        .project-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -2px;
+            left: 0;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+
+        .project-links a:hover::after {
+            width: 100%;
+        }
+
+        /* === CONTACT === */
+        #contact {
+            padding: 120px 5%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #000;
+            letter-spacing: -1px;
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 2.5rem;
+            color: #000;
+        }
+
+        .contact-email a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 2px solid #000;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            background: #000;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 0;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: transparent;
+            color: #000;
+            border: 2.5px solid #000;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-form button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .contact-form button:hover::before {
+            left: 0;
+        }
+
+        .contact-form button:hover {
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: #f8f8f8;
+            color: #555;
+            font-size: 0.95rem;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        footer i {
+            color: #000;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.2rem; }
+            .hero-content p { font-size: 1.15rem; }
+            #about h2, #projects h2, #contact h2 { font-size: 2.4rem; }
+            .about-container { flex-direction: column; text-align: center; }
+            .about-text { text-align: center; }
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+            .contact-email { font-size: 1.1rem; }
+            .nav-links { gap: 1rem; }
+            .site-title { font-size: 1rem; }
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="site-title">
+            <a href="#">JAY TURNER PORTFOLIO</a>
+        </div>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>I Build Things That Work</h1>
+            <p>Full-Stack Developer | JavaScript • Angular • Ruby • Rails • React • Node.js</p>
+            <a href="#projects" class="cta-button">See the Work</a>
+        </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-photo">
+                <!-- Replace with your real photo -->
+                <img src="https://via.placeholder.com/340x420/ffffff/000000?text=Your+Photo" alt="Jay Thomas Turner">
+            </div>
+            <div class="about-text">
+                <p>
+                    I didn’t take the traditional path — and that’s exactly why my code works in the real world.
+                </p>
+                <p>
+                    In 2022, I completed an intensive full-stack bootcamp at <strong>ROBOGARDEN</strong>, where I built production-grade apps from day one — no theory, just shipping. From CRUD APIs to responsive SPAs, I learned by doing.
+                </p>
+                <p>
+                    I also studied Computer Science at <strong>Athabasca University</strong> (distance learning). I didn’t finish the degree — I was too busy building real systems for real clients. The coursework sharpened my logic, algorithms, and systems thinking.
+                </p>
+                <p>
+                    Before that, I went all-in on <strong>The Odin Project</strong> — a free, open-source curriculum that taught me the fundamentals of web development the hard way: HTML, CSS, JavaScript, Git, and the command line. No hand-holding. Just code, debug, repeat.
+                </p>
+                <p>
+                    Today, I write <span class="highlight">clean, fast, maintainable code</span> — whether it’s Angular dashboards used by thousands, Ruby on Rails backends handling millions of requests, or React apps that load in under a second.
+                </p>
+                <p>
+                    I don’t chase trends. I solve problems. And I ship.
+                </p>
+            </div>
+        </div>
+
+        <!-- GITHUB STATS -->
+        <div class="github-stats">
+            <h3>GitHub Activity</h3>
+            <!-- LIVE STATS - AUTO-UPDATES -->
+            <img src="https://github-readme-stats.vercel.app/api?username=j-6-z&show_icons=true&theme=radical&hide_border=true&title_color=000000&text_color=1a1a1a&bg_color=ffffff" alt="JTT's GitHub Stats" />
+        </div>
+
+        <!-- SKILLS -->
+        <div class="skills-section">
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                <div class="skill-item"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+                <div class="skill-item"><i class="fab fa-angular"></i><span>Angular</span></div>
+                <div class="skill-item"><i class="fab fa-react"></i><span>React</span></div>
+                <div class="skill-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+                <div class="skill-item"><i class="fas fa-gem"></i><span>Ruby</span></div>
+                <div class="skill-item"><i class="fas fa-train"></i><span>Rails</span></div>
+                <div class="skill-item"><i class="fas fa-database"></i><span>MongoDB</span></div>
+                <div class="skill-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                <div class="skill-item"><i class="fas fa-terminal"></i><span>CLI</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>Real Projects. Real Impact.</h2>
+        <div class="project-cards">
+            <!-- Jay Isaac AI -->
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://via.placeholder.com/340x200/111111/ffffff?text=JAY+ISAAC+AI');"></div>
+                <div class="project-info">
+                    <h3>Jay Isaac AI</h3>
+                    <p>AI-powered art platform. React + Node.js + OpenAI API. Real-time generation, gallery, user auth.</p>
+                    <div class="project-links">
+                        <a href="https://www.jayisaacai.com" target="_blank">Live</a>
+                        <a href="#">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tree6z -->
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://via.placeholder.com/340x200/003300/ffffff?text=TREE6Z');"></div>
+                <div class="project-info">
+                    <h3>Tree6z</h3>
+                    <p>Tree care & landscaping service. Full-stack Ruby on Rails + PostgreSQL. Booking, payments, CMS.</p>
+                    <div class="project-links">
+                        <a href="https://www.tree6z.ca" target="_blank">Live</a>
+                        <a href="#">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder -->
+            <div class="project-card">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Internal Ops Platform</h3>
+                    <p>Angular + Rails API. Reduced manual reporting by 78%. 40k+ active users.</p>
+                    <div class="project-links">
+                        <a href="#">Live</a>
+                        <a href="#">Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p class="contact-email">
+            <a href="mailto:jaythomasturner@gmail.com">jaythomasturner@gmail.com</a>
+        </p>
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Jay Thomas Turner.</p>
+    </footer>
+
+    <!-- NAV ACTIVE STATE + SMOOTH SCROLL -->
+    <script>
+        // Smooth scroll + active nav highlight
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+
+                // Update active class
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Highlight on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = ['about', 'projects', 'contact'];
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element.getBoundingClientRect().top <= 100) {
+                    current = section;
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
