@@ -347,6 +347,7 @@
             margin: 0 auto;
         }
 
+        /* CARD */
         .project-card {
             background: #ffffff;
             width: 340px;
@@ -355,6 +356,8 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.06);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             border: 1px solid #e8e8e8;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -362,18 +365,22 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
 
+        /* IMAGE CONTAINER */
         .project-img {
-            height: 200px;
-            background: #f0f0f0;
-            position: relative;
-            overflow: hidden;
+            height: 200px;                     /* fixed height */
+            BACKGROUND-SIZE: cover;            /* fill the box */
+            BACKGROUND-POSITION: center;       /* keep subject centered */
+            BACKGROUND-REPEAT: no-repeat;
             border-bottom: 1px solid #e0e0e0;
-            background-size: cover;
-            background-position: center;
         }
 
+        /* INFO */
         .project-info {
+            flex: 1;                           /* push links to bottom */
             padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-info h3 {
@@ -388,8 +395,10 @@
             color: #444;
             margin-bottom: 1.2rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
+        /* LINKS */
         .project-links a {
             color: #000;
             text-decoration: none;
@@ -643,44 +652,35 @@
     <section id="projects">
         <h2>Real Projects. Real Impact.</h2>
         <div class="project-cards">
+
             <!-- Jay Isaac AI -->
             <div class="project-card">
-                <div class="project-img" style="background-image: url('https://via.placeholder.com/340x200/111111/ffffff?text=JAY+ISAAC+AI');"></div>
+                <div class="project-img" style="background-image:url('images/download.jpg');"></div>
                 <div class="project-info">
                     <h3>Jay Isaac AI</h3>
-                    <p>AI-powered art platform. React + Node.js + OpenAI API. Real-time generation, gallery, user auth.</p>
+                    <p>AI-powered art generator. Real-time DALL·E 3 integration. Built solo.</p>
                     <div class="project-links">
                         <a href="https://www.jayisaacai.com" target="_blank">Live</a>
-                        <a href="#">Code</a>
+                        <a href="https://github.com/j-6-z/isaacaiautomation1" target="_blank">Code</a>
                     </div>
                 </div>
             </div>
 
             <!-- Tree6z -->
             <div class="project-card">
-                <div class="project-img" style="background-image: url('https://via.placeholder.com/340x200/003300/ffffff?text=TREE6Z');"></div>
+                <div class="project-img" style="background-image:url('images/LOGO_C_1.webp');"></div>
                 <div class="project-info">
                     <h3>Tree6z</h3>
-                    <p>Tree care & landscaping service. Full-stack Ruby on Rails + PostgreSQL. Booking, payments, CMS.</p>
+                    <p>Client booking system. Rails + Stripe + PostgreSQL. In production.</p>
                     <div class="project-links">
                         <a href="https://www.tree6z.ca" target="_blank">Live</a>
-                        <a href="#">Code</a>
+                        <a href="https://github.com/j-6-z/tree6z" target="_blank">Code</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Placeholder -->
-            <div class="project-card">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <h3>Internal Ops Platform</h3>
-                    <p>Angular + Rails API. Reduced manual reporting by 78%. 40k+ active users.</p>
-                    <div class="project-links">
-                        <a href="#">Live</a>
-                        <a href="#">Code</a>
-                    </div>
-                </div>
-            </div>
+            <!-- Add more cards here using the same pattern -->
+
         </div>
     </section>
 
@@ -706,7 +706,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2025 Jay Thomas Turner.</p>
+        <p>© 2025 Jay Thomas Turner. Hand-coded. No frameworks. Just <i class="fas fa-terminal"></i> and <i class="fas fa-coffee"></i>.</p>
     </footer>
 
     <!-- NAV ACTIVE STATE + SMOOTH SCROLL -->
