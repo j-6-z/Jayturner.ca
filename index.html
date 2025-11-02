@@ -256,6 +256,33 @@
             font-size: 0.95rem;
         }
 
+        /* Timeline enhancements for about section */
+        .about-text p.timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .about-text p.timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .about-text p.timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.8rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: #e0e0e0;
+        }
+
         /* === GITHUB STATS === */
         .github-stats {
             margin-top: 60px;
@@ -605,23 +632,23 @@
         <div class="about-container">
             <div class="about-photo">
                 <!-- Replace with your real photo -->
-                <img src="/images/jay profile.jpg" alt="Jay Thomas Turner">
+                <img src="https://i.ibb.co/1wzXdz6/jay-profile.jpg" alt="Jay Thomas Turner">
             </div>
             <div class="about-text">
                 <p>
                     I didn’t take the traditional path — and that’s exactly why my code works in the real world.
                 </p>
-                <p>
-                    In 2022, I completed an intensive full-stack bootcamp at <strong>ROBOGARDEN</strong>, where I built production-grade apps from day one — no theory, just shipping. From CRUD APIs to responsive SPAs, I learned by doing.
+                <p class="timeline-item">
+                    My journey kicked off at the beginning of 2024 with <strong>The Odin Project</strong> — a free, open-source curriculum that drilled the fundamentals of web development into me the hard way: HTML, CSS, JavaScript, Git, and the command line. No hand-holding. Just code, debug, repeat.
+                </p>
+                <p class="timeline-item">
+                    From there, I powered through and finished an intensive coding bootcamp in August 2024, where I built production-grade apps from the ground up — no fluff, just shipping real features like CRUD APIs and responsive single-page applications.
+                </p>
+                <p class="timeline-item">
+                    In January 2025, I enrolled in Computer Science at <strong>Athabasca University</strong> (distance learning). But I never went back — by September, I was all-in on hunting for a real job, channeling my skills into practical, impactful work.
                 </p>
                 <p>
-                    I also studied Computer Science at <strong>Athabasca University</strong> (distance learning). I didn’t finish the degree — I was too busy building real systems for real clients. The coursework sharpened my logic, algorithms, and systems thinking.
-                </p>
-                <p>
-                    Before that, I went all-in on <strong>The Odin Project</strong> — a free, open-source curriculum that taught me the fundamentals of web development the hard way: HTML, CSS, JavaScript, Git, and the command line. No hand-holding. Just code, debug, repeat.
-                </p>
-                <p>
-                    Today, I write <span class="highlight">clean, fast, maintainable code</span> — whether it’s Angular dashboards used by thousands, Ruby on Rails backends handling millions of requests, or React apps that load in under a second.
+                    Today, I write <span class="highlight">clean, fast, maintainable code</span> — whether it’s Angular dashboards scaling to thousands of users, Ruby on Rails backends handling heavy traffic, or React apps that load lightning-quick.
                 </p>
                 <p>
                     I don’t chase trends. I solve problems. And I ship.
@@ -655,7 +682,7 @@
 
 <!-- Jay Isaac AI -->
 <div class="project-card">
-    <img src="/images/LOGO_C_1.webp" alt="Jay Turner">
+    <img src="https://i.ibb.co/VpWGvrhS/LOGO-C-1.webp" alt="Jay Turner">
     <div class="project-info">
         <h3>Jay Isaac AI</h3>
         <p>Stripe integration. AI chatbot integration. Real-time DALL·E 3 integration. Built solo.</p>
@@ -668,7 +695,7 @@
 
 <!-- Tree6z -->
 <div class="project-card">
-    <img src="/images/download.jpg" alt="Jay Turner">
+    <img src="https://i.ibb.co/HTzW6J9J/download.jpg" alt="Jay Turner">
     <div class="project-info">
         <h3>Tree6z</h3>
         <p>Client service platform. Year-round landscaping bookings. Created solo.</p>
@@ -706,7 +733,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2025 Jay Turner. Hand-coded.</i>.</p>
+        <p>© 2025 Jay Turner. Hand-coded.</p>
     </footer>
 
     <!-- NAV ACTIVE STATE + SMOOTH SCROLL -->
