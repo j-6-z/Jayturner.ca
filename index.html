@@ -385,6 +385,7 @@
             border: 1px solid #e8e8e8;
             display: flex;
             flex-direction: column;
+            cursor: pointer; /* Added for better click feedback */
         }
 
         .project-card:hover {
@@ -426,13 +427,25 @@
         }
 
         /* LINKS */
+        .project-links {
+            display: flex;
+            align-items: center;
+        }
+
         .project-links a {
             color: #000;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem; /* Increased for better clickability */
+            padding: 8px 16px; /* Added padding for larger tap targets */
             margin-right: 1.2rem;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background: #f0f0f0;
+            border-radius: 4px;
         }
 
         .project-links a::after {
@@ -440,14 +453,24 @@
             position: absolute;
             width: 0;
             height: 1.5px;
-            bottom: -2px;
-            left: 0;
+            bottom: 6px; /* Adjusted for padding */
+            left: 16px;
             background: #000;
             transition: width 0.3s ease;
         }
 
         .project-links a:hover::after {
-            width: 100%;
+            width: calc(100% - 32px); /* Adjusted for padding */
+        }
+
+        /* New styles to remove blue underline from the main project links */
+        .project-card a:not(.project-links a) {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card a:not(.project-links a):hover {
+            text-decoration: none;
         }
 
         /* === CONTACT === */
@@ -680,11 +703,15 @@
         <h2>Real Projects. Real Impact.</h2>
         <div class="project-cards">
 
-<!-- Jay Isaac AI -->
+<!-- Jayisaac AI -->
 <div class="project-card">
-    <img src="https://i.ibb.co/VpWGvrhS/LOGO-C-1.webp" alt="Jay Turner">
+    <a href="https://www.jayisaacai.com" target="_blank" rel="noopener" aria-label="View Jayisaac AI live site">
+        <img src="https://i.ibb.co/VpWGvrhS/LOGO-C-1.webp" alt="Jayisaac AI Project">
+    </a>
     <div class="project-info">
-        <h3>Jay Isaac AI</h3>
+        <a href="https://www.jayisaacai.com" target="_blank" rel="noopener" aria-label="View Jayisaac AI live site">
+            <h3>Jayisaac AI</h3>
+        </a>
         <p>Stripe integration. AI chatbot integration. Real-time DALL·E 3 integration. Built solo.</p>
         <div class="project-links">
             <a href="https://www.jayisaacai.com" target="_blank" rel="noopener">Live</a>
@@ -695,9 +722,13 @@
 
 <!-- Tree6z -->
 <div class="project-card">
-    <img src="https://i.ibb.co/HTzW6J9J/download.jpg" alt="Jay Turner">
+    <a href="https://www.tree6z.ca" target="_blank" rel="noopener" aria-label="View Tree6z live site">
+        <img src="https://i.ibb.co/HTzW6J9J/download.jpg" alt="Tree6z Project">
+    </a>
     <div class="project-info">
-        <h3>Tree6z</h3>
+        <a href="https://www.tree6z.ca" target="_blank" rel="noopener" aria-label="View Tree6z live site">
+            <h3>Tree6z</h3>
+        </a>
         <p>Client service platform. Year-round landscaping bookings. Created solo.</p>
         <div class="project-links">
             <a href="https://www.tree6z.ca" target="_blank" rel="noopener">Live</a>
