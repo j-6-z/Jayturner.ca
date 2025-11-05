@@ -385,7 +385,7 @@
             border: 1px solid #e8e8e8;
             display: flex;
             flex-direction: column;
-            cursor: pointer; /* Added for better click feedback */
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -395,16 +395,16 @@
 
         /* IMAGE CONTAINER */
         .project-img {
-            height: 200px;                     /* fixed height */
-            BACKGROUND-SIZE: cover;            /* fill the box */
-            BACKGROUND-POSITION: center;       /* keep subject centered */
-            BACKGROUND-REPEAT: no-repeat;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             border-bottom: 1px solid #e0e0e0;
         }
 
         /* INFO */
         .project-info {
-            flex: 1;                           /* push links to bottom */
+            flex: 1;
             padding: 1.8rem;
             display: flex;
             flex-direction: column;
@@ -436,8 +436,8 @@
             color: #000;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem; /* Increased for better clickability */
-            padding: 8px 16px; /* Added padding for larger tap targets */
+            font-size: 1rem;
+            padding: 8px 16px;
             margin-right: 1.2rem;
             position: relative;
             transition: background 0.3s ease, color 0.3s ease;
@@ -453,17 +453,16 @@
             position: absolute;
             width: 0;
             height: 1.5px;
-            bottom: 6px; /* Adjusted for padding */
+            bottom: 6px;
             left: 16px;
             background: #000;
             transition: width 0.3s ease;
         }
 
         .project-links a:hover::after {
-            width: calc(100% - 32px); /* Adjusted for padding */
+            width: calc(100% - 32px);
         }
 
-        /* New styles to remove blue underline from the main project links */
         .project-card a:not(.project-links a) {
             text-decoration: none;
             color: inherit;
@@ -616,11 +615,11 @@
             .site-title { font-size: 1rem; }
         }
         .project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 
     <!-- Font Awesome -->
@@ -654,10 +653,16 @@
         <h2>About Me</h2>
         <div class="about-container">
             <div class="about-photo">
-                <!-- Replace with your real photo -->
-                <img src="https://i.ibb.co/1wzXdz6/jay-profile.jpg" alt="Jay Thomas Turner">
+                <!-- Replace the src below with your own photo (keep the same dimensions for best look) -->
+                <img src="https://i.ibb.co/1wzXdz6/jay-profile.jpg" alt="Jay Thomas Turner – First Nations Web Developer">
             </div>
             <div class="about-text">
+                <!-- NEW INTRO PARAGRAPH -->
+                <p>
+                    I’m a <strong>First Nations web developer</strong> from <strong>James Smith Cree Nation</strong>. 
+                    My roots fuel a relentless drive to build digital tools that are reliable, accessible, and impactful.
+                </p>
+
                 <p>
                     I didn’t take the traditional path — and that’s exactly why my code works in the real world.
                 </p>
@@ -678,7 +683,6 @@
                 </p>
             </div>
         </div>
-
 
         <!-- SKILLS -->
         <div class="skills-section">
