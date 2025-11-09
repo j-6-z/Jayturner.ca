@@ -6,7 +6,31 @@
     <title>Jay Turner | First Nations Web Developer</title>
     <meta name="description" content="First Nations full-stack dev. I build fast, clean, grant-funded websites — focused on bands, but I serve everyone. $1.5K–$10K. No agencies. No delays." />
 
+    <!-- SEO & Open Graph -->
+    <meta name="keywords" content="First Nations web developer, Indigenous website design, grant funded band website, Saskatchewan web developer, Cree Nation website">
+    <link rel="canonical" href="https://jayturner.ca"/>
+    <meta property="og:title" content="Jay Turner | First Nations Web Developer">
+    <meta property="og:description" content="Grant-funded websites for bands. $1.5K–$10K. Built in 2 weeks.">
+    <meta property="og:image" content="https://i.ibb.co/1wzXdz6/jay-profile.jpg">
+    <meta property="og:url" content="https://jayturner.ca">
+    <meta property="og:type" content="website">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jay Turner",
+      "jobTitle": "First Nations Full-Stack Developer",
+      "url": "https://jayturner.ca",
+      "email": "jaythomasturner@gmail.com",
+      "address": { "@type": "PostalAddress", "addressRegion": "SK" },
+      "knowsAbout": ["Web Development", "React", "Rails", "Grant-Funded Websites", "First Nations"]
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <style>
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -31,14 +55,23 @@
         #hero { padding-top:80px; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; background:#fff; padding:2rem; }
         .hero-content { max-width:860px; }
         .hero-content h1 { font-size:4.8rem; font-weight:700; letter-spacing:-2px; margin-bottom:1.2rem; color:#000; line-height:1.1; }
-        .hero-content p { font-size:1.35rem; color:#333; margin-bottom:2.5rem; }
+        .hero-content p { font-size:1.35rem; color:#333; margin-bottom:1rem; }
         .cta-button { display:inline-block; padding:16px 36px; font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; background:transparent; color:#000; border:2.5px solid #000; border-radius:0; text-decoration:none; transition:all .35s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
         .cta-button::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:#000; transition:left .35s cubic-bezier(.4,0,.2,1); z-index:-1; }
         .cta-button:hover::before { left:0; } .cta-button:hover { color:#fff; }
 
         section { padding:140px 5% 100px; }
-        #about, #services, #contact { background:#fff; } #projects { background:#f8f8f8; }
+        #about, #services, #contact, #start-here, #testimonials { background:#fff; } 
+        #projects, #trust-bar { background:#f8f8f8; }
         h2 { font-size:3rem; font-weight:700; margin-bottom:1.5rem; color:#000; letter-spacing:-1px; text-align:center; }
+
+        /* TRUST BAR */
+        #trust-bar { padding:20px 5%; text-align:center; background:#000; color:#fff; font-family:'JetBrains Mono',monospace; font-size:0.95rem; letter-spacing:1px; }
+        #trust-bar strong { font-weight:600; }
+
+        /* START HERE */
+        #start-here { padding:80px 5%; text-align:center; }
+        #start-here .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; max-width:800px; margin:2rem auto; font-size:1.1rem; }
 
         .about-container { max-width:1000px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px; }
         .about-photo { flex:1; min-width:260px; max-width:340px; }
@@ -84,6 +117,10 @@
         .project-links a::after { content:''; position:absolute; width:0; height:1.5px; bottom:6px; left:16px; background:#000; transition:width .3s; }
         .project-links a:hover::after { width:calc(100% - 32px); }
 
+        /* TESTIMONIALS */
+        .testimonial-grid { display:grid; gap:2rem; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); max-width:800px; margin:0 auto; }
+        .testimonial { background:#f8f8f8; padding:2rem; border-left:4px solid #000; font-style:italic; }
+
         /* CONTACT */
         .contact-email { font-size:1.3rem; font-family:'JetBrains Mono',monospace; margin-bottom:2.5rem; color:#000; text-align:center; }
         .contact-email a { color:#000; text-decoration:none; border-bottom:2px solid #000; padding-bottom:2px; transition:all .3s; display:inline-block; }
@@ -97,16 +134,26 @@
         .contact-form button::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:#000; transition:left .35s cubic-bezier(.4,0,.2,1); z-index:-1; }
         .contact-form button:hover::before { left:0; } .contact-form button:hover { color:#fff; }
 
+        #form-success { display:none; background:#000; color:#fff; padding:1.5rem; margin:2rem auto 0; max-width:600px; text-align:center; font-family:'JetBrains Mono',monospace; border:2px solid #fff; }
+
+        /* STICKY CTA */
+        .sticky-cta { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(120px); z-index:999; transition:transform .3s; }
+        .sticky-cta.show { transform:translateX(-50%) translateY(0); }
+        .sticky-cta a { background:#000; color:#fff; padding:14px 28px; font-family:'JetBrains Mono',monospace; font-weight:600; font-size:0.95rem; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+
+        /* FOOTER LOGOS */
+        .footer-logos { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; margin:2rem 0; }
+        .footer-logos img { height:40px; filter:grayscale(1); opacity:0.7; }
+
         footer { text-align:center; padding:80px 20px; background:#f8f8f8; color:#555; font-size:0.95rem; border-top:1px solid #e8e8e8; }
 
         @media (max-width:768px) {
             .hero-content h1 { font-size:3.2rem; } .hero-content p { font-size:1.15rem; }
             h2 { font-size:2.4rem; } .about-container { flex-direction:column; text-align:center; } .about-text { text-align:center; }
             .skills-grid { grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); } .nav-links { gap:1rem; } .site-title { font-size:1rem; }
+            .sticky-cta { display:none; }
         }
     </style>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
@@ -120,14 +167,34 @@
         </nav>
     </header>
 
+    <!-- TRUST BAR -->
+    <section id="trust-bar">
+        <p><strong>TRUSTED BY</strong> James Smith Cree Nation • Muskeg Lake Cree Nation • Private Clients in SK, MB, ON</p>
+    </section>
+
     <!-- HERO -->
     <section id="hero">
         <div class="hero-content">
-            <h1>Websites That Work</h1>
+            <h1>I Build Websites That Work</h1>
             <p>Focused on First Nations bands — but I build for everyone.</p>
             <p>Indigenous-led • Grant-funded • $1,500–$10K • 2 weeks</p>
-            <a href="#contact" class="cta-button">Get Free Site Audit</a>
+            <p><strong>Free audit</strong>: I’ll show you what’s broken, what’s grant-eligible, and how to fix it fast.</p>
+            <a href="#contact" class="cta-button">Get Grant-Ready Site Audit (Free, 48h)</a>
         </div>
+    </section>
+
+    <!-- START HERE -->
+    <section id="start-here">
+        <h2>Start Here</h2>
+        <p style="max-width:700px;margin:0 auto 2rem;font-size:1.2rem;color:#333;">
+            Send me your current site (or idea). I’ll reply in <strong>24h</strong> with:
+        </p>
+        <div class="checklist">
+            <div><strong>1.</strong> What’s broken</div>
+            <div><strong>2.</strong> Grant eligibility</div>
+            <div><strong>3.</strong> Fixed quote + timeline</div>
+        </div>
+        <a href="#contact" style="display:inline-block;margin-top:2rem;padding:14px 32px;background:#000;color:#fff;font-weight:600;text-decoration:none;">Send Your Site</a>
     </section>
 
     <!-- ABOUT -->
@@ -238,35 +305,91 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <h2>What Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>“Jay built our band portal in 10 days. Clean, fast, and grant-covered.”</p>
+                <p style="margin-top:1rem;font-weight:600;">— Robert Head, Muskeg Lake Cree Nation</p>
+            </div>
+            <!-- Add more as you get them -->
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
         <h2>Get In Touch</h2>
         <p class="contact-email">
             <a href="mailto:jaythomasturner@gmail.com">jaythomasturner@gmail.com</a>
         </p>
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="hidden" name="_subject" value="Web Inquiry">
+
+        <!-- Grant Magnet -->
+        <div style="background:#f0f0f0;padding:2rem;border:2px solid #000;max-width:600px;margin:0 auto 2rem;text-align:center;">
+            <p style="margin:0;font-weight:600;font-size:1.1rem;">
+                <strong>99% of band sites qualify for grants</strong><br>
+                <span style="font-size:0.95rem;color:#555;">I’ll help you find + apply for funding (no cost)</span>
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form 
+            class="contact-form" 
+            action="https://formspree.io/f/xkgkwvov" 
+            method="POST"
+            data-formspree
+        >
+            <input type="hidden" name="_subject" value="New Web Inquiry – JayTurner.ca">
+            <input type="hidden" name="_next" value="#contact?success=true">
+            <input type="hidden" name="_replyto" value="{{email}}">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
             <label>Org / Business / Band *</label>
             <input type="text" name="org" placeholder="e.g. James Smith Cree Nation, My Startup, or Your Name" required>
+
             <label>Name *</label>
             <input type="text" name="name" required>
+
             <label>Email *</label>
             <input type="email" name="email" required>
+
             <label>Budget</label>
             <select name="budget">
                 <option>Starter ($1.5K)</option>
                 <option>Pro ($4K)</option>
                 <option>Custom ($7K+)</option>
             </select>
+
             <label>Project</label>
             <textarea name="message" placeholder="Need a site, app, or upgrade..." required></textarea>
+
             <button type="submit">Send → Quote in 24h</button>
         </form>
+
+        <div id="form-success">
+            <p style="margin:0;font-weight:600;">
+                Message Sent! I’ll reply in 24h with your quote.
+            </p>
+        </div>
     </section>
 
-    <footer><p>© 2025 Jay Turner. Hand-coded.</p></footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logos">
+            <img src="https://i.ibb.co/HTzW6J9J/download.jpg" alt="Tree6z">
+            <img src="https://i.ibb.co/VpWGvrhS/LOGO-C-1.webp" alt="Jayisaac AI">
+        </div>
+        <p>© 2025 Jay Turner. Hand-coded.</p>
+    </footer>
 
+    <!-- STICKY CTA -->
+    <div class="sticky-cta">
+        <a href="#contact">Get Grant-Ready Audit (Free)</a>
+    </div>
+
+    <!-- SCRIPTS -->
     <script>
+        // Smooth scroll + active nav
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
@@ -285,6 +408,37 @@
                 a.classList.remove('active');
                 if (a.getAttribute('href') === `#${cur}`) a.classList.add('active');
             });
+        });
+
+        // Success message
+        if (window.location.href.includes('success=true')) {
+            const success = document.getElementById('form-success');
+            const form = document.querySelector('.contact-form');
+            if (success && form) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+                success.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Button loading
+        document.querySelector('.contact-form')?.addEventListener('submit', function() {
+            const btn = this.querySelector('button');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+        });
+
+        // Sticky CTA show/hide
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const current = window.pageYOffset;
+            const cta = document.querySelector('.sticky-cta');
+            if (current > lastScroll && current > 600) {
+                cta.classList.remove('show');
+            } else if (current < lastScroll) {
+                cta.classList.add('show');
+            }
+            lastScroll = current;
         });
     </script>
 </body>
