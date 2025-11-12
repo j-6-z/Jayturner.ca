@@ -112,33 +112,63 @@
         .sticky-cta.show { transform:translateX(-50%) translateY(0); }
         .sticky-cta a { background:#000; color:#fff; padding:.8rem 1.6rem; font-family:'JetBrains Mono',monospace; font-weight:600; font-size:.9rem; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,.2); }
 
-        /* MOBILE: TIGHTER HEADER + BIGGER ICONS */
-        @media (max-width:768px) {
+        /* MOBILE: ONE LINE, TINY TEXT, NO WRAP */
+        @media (max-width: 768px) {
             .site-header {
-                padding: 0.6rem 5% !important;
+                padding: 0.5rem 3% !important;
+                flex-wrap: nowrap !important;
+                overflow: hidden;
+                align-items: center;
             }
+
             .site-title a {
-                font-size: 0.95rem !important;
+                font-size: 0.85rem !important;
+                white-space: nowrap;
+                flex-shrink: 0;
+                letter-spacing: 1px;
             }
+
             .nav-links {
-                gap: 0.6rem !important;
+                display: flex !important;
+                gap: 0.3rem !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                white-space: nowrap;
+                align-items: center;
             }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
             .nav-links a {
-                font-size: 0.7rem !important;
+                font-size: 0.58rem !important;
+                flex-shrink: 0;
+                white-space: nowrap;
+                padding: 0 0.25rem !important;
+                line-height: 1;
+            }
+
+            .nav-links a::after {
+                display: none !important;
             }
 
             .about-container { flex-direction:column; text-align:center; }
             .about-text { text-align:center; }
             .sticky-cta { display:none; }
             section { padding:4rem 5% 3rem; }
-
-            /* BIGGER ICONS ON MOBILE */
             .skill-item i { font-size:3.2rem !important; margin-bottom:1rem; }
         }
-        @media (max-width:480px) {
+
+        @media (max-width: 480px) {
             .hero-content h1 { font-size:2.5rem; }
             .services-grid { grid-template-columns:1fr; }
             .project-card img { height:150px; }
+
+            .site-title a { font-size: 0.78rem !important; }
+            .nav-links a { font-size: 0.52rem !important; }
         }
     </style>
 </head>
@@ -238,7 +268,7 @@
                 <a href="#contact" style="display:inline-block;margin-top:1rem;color:#000;font-weight:600;text-decoration:underline;">Let’s Talk</a>
             </div>
         </div>
-        <p style="text-align:center;margin-top:2rem;font-weight:600;">50% upfront • 2-week delivery</p>
+        <p style="text-align:center;margin-top:2rem vacío;font-weight:600;">50% upfront • 2-week delivery</p>
     </section>
 
     <section id="projects">
