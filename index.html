@@ -112,11 +112,21 @@
         .sticky-cta.show { transform:translateX(-50%) translateY(0); }
         .sticky-cta a { background:#000; color:#fff; padding:.8rem 1.6rem; font-family:'JetBrains Mono',monospace; font-weight:600; font-size:.9rem; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,.2); }
 
-        /* MOBILE: SMALLER NAV + BIGGER ICONS */
+        /* MOBILE: TIGHTER HEADER + BIGGER ICONS */
         @media (max-width:768px) {
-            .nav-links { gap:0.8rem; }
-            .nav-links a { font-size:0.75rem; } /* ← SMALLER ON MOBILE */
-            .site-title a { font-size:1rem; }
+            .site-header {
+                padding: 0.6rem 5% !important;
+            }
+            .site-title a {
+                font-size: 0.95rem !important;
+            }
+            .nav-links {
+                gap: 0.6rem !important;
+            }
+            .nav-links a {
+                font-size: 0.7rem !important;
+            }
+
             .about-container { flex-direction:column; text-align:center; }
             .about-text { text-align:center; }
             .sticky-cta { display:none; }
@@ -143,10 +153,6 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-
-    <!-- <section id="trust-bar">
-        <p><strong>TRUSTED BY</strong> James Smith Cree Nation • Muskeg Lake Cree Nation • Private Clients in SK, MB, ON</p>
-    </section> -->
 
     <section id="hero">
         <div class="hero-content">
